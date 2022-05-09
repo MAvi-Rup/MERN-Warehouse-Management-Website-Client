@@ -22,7 +22,7 @@ const Products = ({product}) => {
 
             </div>
             <div className="card-footer">
-            <button onClick={() => navigateProduct(_id)} className='btn btn-primary'><span className='fw-bold'>Products Inventory: </span>{name}</button>
+            <button onClick={() => navigateProduct(_id)} className='btn bg-danger bg-opacity-75'><span className='fw-bold'>Products Inventory: </span>{name}</button>
             </div>
         </div>
     </div>
