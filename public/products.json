@@ -1,0 +1,66 @@
+[
+  {
+    "id": "1",
+    "name": "AKG Premimum Headphone",
+    "desc": "This is the best quality authentic heeadphone. And all our products are authentic and 100% Original.",
+    "suplier": "Hitch Corporation",
+    "price": 6500,
+    "quantity": 25,
+    "img": "./images/akg.jpg"
+  },
+  {
+    "id": "2",
+    "name": "A4Tech Premimum Headphone",
+    "desc": "This is the best quality authentic heeadphone. And all our products are authentic and 100% Original.",
+    "suplier": "Regal Corporation",
+    "price": 5500,
+    "quantity": 15,
+    "img": "./images/atech.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Beats Premimum Headphone",
+    "desc": "This is the best quality authentic heeadphone. And all our products are authentic and 100% Original.",
+    "suplier": "Baykok Corporation",
+    "price": 8500,
+    "quantity": 22,
+    "img": "./images/beats.jpg"
+  },
+  {
+    "id": "4",
+    "name": "Xiomi Premimum Headphone",
+    "desc": "This is the best quality authentic heeadphone. And all our products are authentic and 100% Original.",
+    "suplier": "Mukta Traders",
+    "price": 4500,
+    "quantity": 45,
+    "img": "./images/xiomi.jpg"
+  },
+  {
+    "id": "5",
+    "name": "Technica Premimum Headphone",
+    "desc": "This is the best quality authentic heeadphone. And all our products are authentic and 100% Original.",
+    "suplier": "Hitch Corporation",
+    "price": 3500,
+    "quantity": 75,
+    "img": "./images/technica.jpg"
+  },
+  {
+    "id": "6",
+    "name": "Microlab Premimum Headphone",
+    "desc": "This is the best quality authentic heeadphone. And all our products are authentic and 100% Original.",
+    "suplier": "Hitch Corporation",
+    "price": 10500,
+    "quantity": 9,
+    "img": "./images/microlab.jpg"
+  },
+  {
+    "id": "7",
+    "name": "JBL Premimum Headphone",
+    "desc": "This is the best quality authentic heeadphone. And all our products are authentic and 100% Original.",
+    "suplier": "Jhonson Corporation",
+    "price": 12500,
+    "quantity": 5,
+    "img": "./images/jbl1.jpg"
+  }
+  
+]
