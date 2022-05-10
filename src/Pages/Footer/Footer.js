@@ -19,7 +19,7 @@ const Footer = () => {
                             </div>
                         </h1>
                     </div>
-                    <dov className="col-md-6 col-12">
+                    <div className="col-md-6 col-12">
                         <div className='d-flex justify-content-center align-items-center'>
                             <div id='min-screen'>
                                 <h1>Our Warehouse Address</h1>
@@ -29,7 +29,7 @@ const Footer = () => {
 
                         </div>
 
-                    </dov>
+                    </div>
                 </div>
             </div>
 

@@ -6,7 +6,9 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import Title from '../../Header/Title/Title';
-import { GlobeAltIcon} from '@heroicons/react/solid'
+import Loading from '../../Loading/Loading';
+
+import SocialMediaLogin from '../SocialMediaLogin/SocialMediaLogin';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -24,6 +26,9 @@ const Login = () => {
     }
     if (user) {
         navigate(from, { replace: true });
+    }
+    if(loading||sending){
+        return <Loading></Loading>
     }
     if (error) {
         handleError = <p className='text-warning fs-4'>Error:{error?.message}</p>
@@ -53,7 +58,7 @@ const Login = () => {
         <div className='container'>
             <div className="row">
                 <div className="col-md-6">
-                    <img className='img-fluid' src="./images/beat2.png" alt="" srcset="" />
+                    <img className='img-fluid' src="./images/beat2.png" alt=""/>
                 </div>
                 <div className="col-md-6 d-flex align-items-center">
                     <div className='container mx-auto'>
@@ -64,7 +69,7 @@ const Login = () => {
                                 <Form.Control className='bg-danger bg-opacity-50 text-white' ref={emailRef} type="email" placeholder="Enter email" required />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Control className='bg-danger bg-opacity-50 text-white' ref={passwordRef} type="password" placeholder="Password" required />
+                                <Form.Control className='bg-danger bg-opacity-50 text-white' ref={passwordRef} autoComplete='off' type="password" placeholder="Password" required />
                             </Form.Group>
                             <Button variant="danger w-50 mx-auto d-block mb-2" type="submit">
                                 Login
@@ -73,10 +78,7 @@ const Login = () => {
                         {handleError}
                         <p className='text-danger fst-italic'>New to Gadget World? <Link to="/register" className='text-dark pe-auto text-decoration-none' onClick={navigateRegister}>Please Register</Link> </p>
                         <p className='text-danger fst-italic'>Forget Password? <button className='btn btn-link text-dark pe-auto text-decoration-none' onClick={resetPassword}>Reset Password</button> </p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-danger" type="button"><GlobeAltIcon height='25px' className=" text-blue-500 mx-2"/>GitHub</button>
-                            <button class="btn btn-danger" type="button"><GlobeAltIcon height='25px' className=" text-blue-500 mx-2"/>Google</button>
-                        </div>
+                        <SocialMediaLogin></SocialMediaLogin>
                     </div>
                 </div>
             </div>

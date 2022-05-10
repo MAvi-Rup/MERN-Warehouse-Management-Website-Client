@@ -14,7 +14,7 @@ const Section = () => {
                     </div>
                 </div>
                 <div className="col-md-6 col-12 mx-auto">
-                    <img className='img-fluid .bg-transparent' src="images/beat.jpg" alt="" srcset="" />
+                    <img className='img-fluid .bg-transparent' src="images/beat.jpg" alt=""/>
 
                 </div>
 
