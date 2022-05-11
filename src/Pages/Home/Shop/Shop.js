@@ -14,11 +14,9 @@ const Shop = () => {
 
     // }, [])
     const navigate = useNavigate()
-    const navigateProduct = id =>{
-        navigate(`/inventory/${id}`);
-    }
-    
-    products.map(product =><ManageInventory key={product._id} product={product}></ManageInventory> )
+    // const navigateProduct = id =>{
+    //     navigate(`/inventory/${id}`);
+    // }
 
 
 
@@ -33,13 +31,18 @@ const Shop = () => {
                         key={product._id}
                         product={product}
                     >
-                        <button onClick={() => navigateProduct(product._id)} className='btn bg-danger bg-opacity-75'><span className='fw-bold'>Products Inventory: </span>{product.name}</button>
                     </Products>)
                 }
+
+                
                
 
 
             </div>
+            <div className="d-grid gap-2 col-6 mx-auto mt-5">
+                <button onClick={() => { navigate('/manage') }} className="btn btn-danger fw-bold" type="button">Manage Inventory</button>
+            </div>
+
         </div>
     );
 };

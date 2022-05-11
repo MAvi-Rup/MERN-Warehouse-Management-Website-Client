@@ -5,8 +5,10 @@ import Title from '../../Header/Title/Title';
 const AddNew = () => {
     const { register, handleSubmit } = useForm()
 
-    const onSubmit = data => {
-        console.log(data);
+    const onSubmit = (data,e) => {
+        
+
+        
         const url = `http://localhost:5000/products/`
 
         fetch(url, {
@@ -18,7 +20,7 @@ const AddNew = () => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
+               e.target.reset()
             })
     };
 
@@ -30,7 +32,7 @@ const AddNew = () => {
                 <form className='d-flex flex-column border' onSubmit={handleSubmit(onSubmit)}>
                     <div className='p-4 m-3'>
                         <label  className="form-label fw-bold">Product Name</label>
-                        <input className='mb-2 form-control bg-danger bg-opacity-50 text-white' placeholder='Product Name' {...register("ProductName")} />
+                        <input className='mb-2 form-control bg-danger bg-opacity-50 text-white' placeholder='Product Name' autoComplete='off' {...register("name")} />
 
                         <label  className="form-label fw-bold">Product Price</label>
                         <input className='mb-2 form-control bg-danger bg-opacity-50 text-white' autoComplete='off' placeholder='Price' type='number' {...register("price")} />
@@ -42,13 +44,14 @@ const AddNew = () => {
                         <input className='mb-2 form-control bg-danger bg-opacity-50 text-white' placeholder='Product Sold' type='number' {...register("sold")} />
 
                         <label className="form-label fw-bold" >Product Supplier</label>
-                        <input className='mb-2 form-control bg-danger bg-opacity-50 text-white' placeholder='Product Supplier' type='text' {...register("supplier")} />
+                        <input className='mb-2 form-control bg-danger bg-opacity-50 text-white' placeholder='Product Supplier' type='text' {...register("suplier")} />
                         
                         <label className="form-label fw-bold" >Product Description</label>
                         <input className='mb-2 form-control bg-danger bg-opacity-50 text-white' placeholder='Product Description' type='text' {...register("desc")} />
 
                         <label className="form-label fw-bold" >Image Source</label>
                         <input className='mb-2 form-control bg-danger bg-opacity-50 text-white' placeholder='Photo URL' type="text" {...register("img")} />
+                        <input className='btn btn-danger fw-bold' type="submit" value="Add Product" />
                     </div>
 
 

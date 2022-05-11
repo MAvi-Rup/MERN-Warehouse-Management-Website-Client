@@ -8,11 +8,7 @@ import useProducts from '../../hooks/useProducts';
 const ManageInventory = () => {
     const [products, setProduct] = useProducts()
     const navigate = useNavigate()
-
-
-
-
-
+    
     const deletProduct = (id) => {
         const proceed = window.confirm('Are you sure?');
         if (proceed) {
@@ -44,12 +40,13 @@ const ManageInventory = () => {
                     </Products>)
 
                 }
-                <div className="d-grid gap-2 col-6 mx-auto mt-5">
-                    <button onClick={()=>{navigate('/addnew')}} className="btn btn-danger fw-bold" type="button">Add Item</button>
-                </div>
 
 
 
+
+            </div>
+            <div className="d-grid gap-2 col-6 mx-auto mt-5">
+                <button onClick={() => { navigate('/addnew') }} className="btn btn-danger fw-bold" type="button">Add Item</button>
             </div>
         </div>
 
