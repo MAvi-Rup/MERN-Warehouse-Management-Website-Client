@@ -1,16 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import useProducts from '../../hooks/useProducts';
 import ManageInventory from '../../Protected/ManageInventory/ManageInventory';
 import Products from '../Product/Products';
 
 const Shop = () => {
-    const [products, setProduct] = useState([])
-    useEffect(() => {
-        const url = `http://localhost:5000/products`;
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setProduct(data))
+    const [products] = useProducts()
+    // useEffect(() => {
+    //     const url = `http://localhost:5000/products`;
+    //     fetch(url)
+    //         .then(res => res.json())
+    //         .then(data => setProduct(data))
 
-    }, [])
+    // }, [])
+    const navigate = useNavigate()
+    const navigateProduct = id =>{
+        navigate(`/inventory/${id}`);
+    }
+    
+    products.map(product =><ManageInventory key={product._id} product={product}></ManageInventory> )
+
+
+
     const newProduct = products.slice(0, 6)
     return (
 
@@ -22,11 +33,10 @@ const Shop = () => {
                         key={product._id}
                         product={product}
                     >
+                        <button onClick={() => navigateProduct(product._id)} className='btn bg-danger bg-opacity-75'><span className='fw-bold'>Products Inventory: </span>{product.name}</button>
                     </Products>)
                 }
-                {
-                    products.map(product =><ManageInventory key={product._id} product={product}></ManageInventory> )
-                }
+               
 
 
             </div>

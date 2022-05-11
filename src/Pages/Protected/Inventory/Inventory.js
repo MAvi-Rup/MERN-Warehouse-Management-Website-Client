@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Title from '../../Header/Title/Title';
 
 
 
@@ -69,6 +70,7 @@ const Inventory = () => {
 
     return (
         <div className='container mb-4 mt-4'>
+            <Title title="Inventory"></Title>
 
             <div className='row'>
                 <Card className="text-center">

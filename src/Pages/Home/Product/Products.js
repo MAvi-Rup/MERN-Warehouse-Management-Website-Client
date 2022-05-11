@@ -1,12 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
-const Products = ({product}) => {
-    const { img, _id, desc, suplier,quantity, price, name } = product
-    const navigate = useNavigate()
-    const navigateProduct = id =>{
-        navigate(`/inventory/${id}`);
-    }
+const Products = (props) => {
+    const { img, desc, suplier,quantity, price, name } = props.product
+    // const navigate = useNavigate()
+    // const navigateProduct = id =>{
+    //     navigate(`/inventory/${id}`);
+    // }
 
     return (
         <div className='g-5 col-sm-12 col-md-6 col-lg-4'>
@@ -21,7 +21,8 @@ const Products = ({product}) => {
                 <small className="text-muted">Suplier Name: {suplier}</small>
             </div>
             <div className="card-footer">
-            <button onClick={() => navigateProduct(_id)} className='btn bg-danger bg-opacity-75'><span className='fw-bold'>Products Inventory: </span>{name}</button>
+                {props.children}
+            {/* <button onClick={() => navigateProduct(_id)} className='btn bg-danger bg-opacity-75'><span className='fw-bold'>Products Inventory: </span>{name}</button> */}
             </div>
         </div>
     </div>

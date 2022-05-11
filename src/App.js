@@ -1,5 +1,6 @@
 
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import './App.css';
 import Footer from './Pages/Footer/Footer';
 
@@ -12,6 +13,7 @@ import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import NotFound from './Pages/NotFound/NotFound';
+import AddNew from './Pages/Protected/AddNew/AddNew';
 import Inventory from './Pages/Protected/Inventory/Inventory';
 import ManageInventory from './Pages/Protected/ManageInventory/ManageInventory';
 import RequireAuth from './Pages/Protected/RequireAuth/RequireAuth';
@@ -30,6 +32,9 @@ function App() {
         <Route path='/manage' element={<RequireAuth>
           <ManageInventory></ManageInventory>
         </RequireAuth>}></Route>
+        <Route path='/addnew' element={<RequireAuth>
+          <AddNew></AddNew>
+        </RequireAuth>}></Route>
         <Route path='/aboutus' element={<AboutUs></AboutUs>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
@@ -38,6 +43,7 @@ function App() {
       </Routes>
 
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }

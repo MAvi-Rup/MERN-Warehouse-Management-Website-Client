@@ -1,24 +1,58 @@
+import { TrashIcon } from '@heroicons/react/solid';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Title from '../../Header/Title/Title';
+import Products from '../../Home/Product/Products';
+import useProducts from '../../hooks/useProducts';
 
-const ManageInventory = ({product}) => {
-    const { img, _id, desc, suplier,quantity, price, name } = product;
+const ManageInventory = () => {
+    const [products, setProduct] = useProducts()
+    const navigate = useNavigate()
+
+
+
+
+
+    const deletProduct = (id) => {
+        const proceed = window.confirm('Are you sure?');
+        if (proceed) {
+            const url = `http://localhost:5000/products/${id}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    const remaining = products.filter(product => product._id !== id);
+                    setProduct(remaining);
+                })
+        }
+    }
+
+
+
     return (
-        <div className='g-5 col-sm-12 col-md-6 col-lg-4'>
-        <div className="card h-100" style={{ width: "18rem", height: '300px' }}>
-            {console.log(img)}
-            <img src={img} className="card-img-top" alt="Service Image" />
-            <div className="card-body">
-                <h5 className="card-title">{name}</h5>
-                <p className="card-text fw-bold">Price: {price} BDT</p>
-                <p className="card-text fw-bold">Quantity: {quantity}</p>
-                <p className="card-text">{desc}</p>
-                <small className="text-muted">Suplier Name: {suplier}</small>
-            </div>
-            <div className="card-footer">
-            <button onClick={() => navigateProduct(_id)} className='btn bg-danger bg-opacity-75'><span className='fw-bold'>Products Inventory: </span>{name}</button>
+        <div className='container mt-5 mb-5' id='shop'>
+            <Title title="Manage Inventory"></Title>
+            <h1 className='text-center text-danger text-decoration-underline fst-italic'>Inventory All Products</h1>
+            <div className='row'>
+                {
+                    products.map(product => <Products
+                        key={product._id}
+                        product={product}>
+                        <button onClick={() => deletProduct(product._id)} className='btn bg-danger bg-opacity-75'><span className='fw-bold'>Delete: {product.name} </span><TrashIcon height='20px' className=" text-blue-500 mx-1" /></button>
+                    </Products>)
+
+                }
+                <div className="d-grid gap-2 col-6 mx-auto mt-5">
+                    <button onClick={()=>{navigate('/addnew')}} className="btn btn-danger fw-bold" type="button">Add Item</button>
+                </div>
+
+
+
             </div>
         </div>
-    </div>
+
     );
 };
 
