@@ -36,7 +36,7 @@ const Inventory = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            toast('Quantity added')
+            alert('Quantity added')
             e.target.reset()
 
         })
@@ -47,7 +47,23 @@ const Inventory = () => {
 
 
     const handleDelivered = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        const newQuantity = quantity-1;
+
+        const updateProduct ={newQuantity}
+        const url = `http://localhost:5000/products/${productId}`
+
+        fetch(url, {
+            method:'PUT',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateProduct)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            alert('Deleivered')
+        })
 
     }
 
@@ -65,9 +81,9 @@ const Inventory = () => {
                             {desc}
                         </Card.Text>
                         <small className="text-muted">Suplier Name: {suplier}</small><br />
-                        <Form onSubmit={handleDelivered}>
-                            <Button variant="danger">Deliverd</Button>
-                        </Form>
+                        
+                            <Button onClick={()=>{handleDelivered()}} variant="danger">Deliverd</Button>
+                      
                     </Card.Body>
                     <Card.Footer className="text-muted fw-bold">Items Sold: {sold}</Card.Footer>
                 </Card>
