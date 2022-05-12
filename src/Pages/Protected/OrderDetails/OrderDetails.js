@@ -1,6 +1,24 @@
+import { TrashIcon } from '@heroicons/react/solid';
 import React from 'react';
+import useOrders from '../../hooks/useOrders';
 
 const OrderDetails = ({order}) => {
+    const [orders,setOrders,user]= useOrders()
+    const deleteMyItem = (id) => {
+        const proceed = window.confirm('Are you sure?');
+        if (proceed) {
+            const url = `http://localhost:5000/myitem/${id}?email=${user?.email}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    const remaining = orders.filter(order => order._id !== id);
+                    setOrders(remaining);
+                })
+        }
+    }
     return (
         <div className='g-5 col-sm-12 col-md-6 col-lg-4'>
         <div className="card h-100" style={{ width: "18rem", height: '300px' }}>
@@ -10,6 +28,7 @@ const OrderDetails = ({order}) => {
                 <p className="card-text fw-bold">Mobile No: {order.phoneNo}</p>
             </div>
             <div className="card-footer">
+            <button onClick={() => deleteMyItem(order._id)} className='btn bg-danger bg-opacity-75'><span className='fw-bold'>Delete: {order.product} </span><TrashIcon height='20px' className=" text-blue-500 mx-1" /></button>
 
             </div>
         </div>

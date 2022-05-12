@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useProducts from '../../hooks/useProducts';
-import ManageInventory from '../../Protected/ManageInventory/ManageInventory';
+
 import Products from '../Product/Products';
 
 const Shop = () => {

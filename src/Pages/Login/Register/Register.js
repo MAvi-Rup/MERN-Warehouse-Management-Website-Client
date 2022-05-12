@@ -26,8 +26,8 @@ const Register = () => {
     ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
-    if(error){
-        handleError= <p className='text-warning'>Error:{error?.message}</p>
+    if(error ||updateError){
+        handleError= <p className='text-warning'>Error:{error?.message}{updateError?.message}</p>
     }
 
     if(loading || updating){
