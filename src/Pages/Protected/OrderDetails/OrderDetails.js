@@ -1,5 +1,6 @@
 import { TrashIcon } from '@heroicons/react/solid';
 import React from 'react';
+import Title from '../../Header/Title/Title';
 import useOrders from '../../hooks/useOrders';
 
 const OrderDetails = ({order}) => {
@@ -21,6 +22,7 @@ const OrderDetails = ({order}) => {
     }
     return (
         <div className='g-5 col-sm-12 col-md-6 col-lg-4'>
+            <Title title="My Item"></Title>
         <div className="card h-100" style={{ width: "18rem", height: '300px' }}>
             <div className="card-body">
                 <h5 className="card-title">Name: {order.product}</h5>
