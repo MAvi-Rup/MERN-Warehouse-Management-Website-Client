@@ -17,7 +17,7 @@ const Header = () => {
         <div>
             <Navbar bg="light" expand="lg">
                 <Container>
-                    <Navbar.Brand as={Link} to='/' className='text-danger'>Gadgets World</Navbar.Brand>
+                    <Navbar.Brand as={Link} to='/' className='text-danger fw-bold'>Gadgets World</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
@@ -37,7 +37,7 @@ const Header = () => {
                             }
 
                             {
-                                user ?  <button className='btn btn-link text-body text-decoration-none' onClick={handleSignOut}>Logout</button>:<Nav.Link as={Link} to='/login'>Login</Nav.Link>
+                                user ?  <button className='btn btn-link text-muted text-decoration-none' onClick={handleSignOut}>Logout</button>:<Nav.Link as={Link} to='/login'>Login</Nav.Link>
                             }
                             
                             {/* <Nav.Link as={Link} to="/register">Register</Nav.Link> */}

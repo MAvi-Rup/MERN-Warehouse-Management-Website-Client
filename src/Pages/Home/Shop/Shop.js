@@ -26,6 +26,7 @@ const Shop = () => {
         <div className='container mt-5 mb-5' id='shop'>
             <h1 className='text-center text-danger text-decoration-underline fst-italic'>Made For You</h1>
             <div className='row'>
+              
                 {
                     newProduct.map(product => <Products
                         key={product._id}

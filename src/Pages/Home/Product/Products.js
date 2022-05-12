@@ -15,7 +15,7 @@ const Products = (props) => {
     return (
         <div className='g-5 col-sm-12 col-md-6 col-lg-4'>
         <div className="card h-100" style={{ width: "18rem", height: '300px' }}>
-            {console.log(img)}
+           
             <img src={img} className="card-img-top" alt="Service Image" />
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>

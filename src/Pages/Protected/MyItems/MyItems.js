@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
+
 import auth from '../../../firebase.init';
 
 const MyItems = () => {
@@ -25,7 +25,8 @@ const MyItems = () => {
         e.preventDefault();
         const myitem = {
             email:user.email,
-            product: product.name,
+            product: product?.name,
+            price:product?.price,
             phoneNo: e.target.number.value,
             productId: id
         }
@@ -33,7 +34,7 @@ const MyItems = () => {
         .then(response =>{
             const {data} = response;
             if(data.insertedId){
-                toast('Itemms Added Successfully')
+                alert('Itemms Added Successfully')
                 e.target.reset();
             }
         })
