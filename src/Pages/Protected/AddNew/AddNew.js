@@ -9,7 +9,7 @@ const AddNew = () => {
         
 
         
-        const url = `http://localhost:5000/products/`
+        const url = `https://arcane-earth-34229.herokuapp.com/products/`
 
         fetch(url, {
             method: 'POST',

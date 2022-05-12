@@ -8,7 +8,7 @@ const OrderDetails = ({order}) => {
     const deleteMyItem = (id) => {
         const proceed = window.confirm('Are you sure?');
         if (proceed) {
-            const url = `http://localhost:5000/myitem/${id}?email=${user?.email}`
+            const url = `https://arcane-earth-34229.herokuapp.com/myitem/${id}?email=${user?.email}`
             fetch(url, {
                 method: 'DELETE'
             })

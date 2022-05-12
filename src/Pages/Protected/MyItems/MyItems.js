@@ -9,7 +9,7 @@ const MyItems = () => {
     const {id}= useParams()
     const [product, setProduct] = useState({})
     useEffect(() => {
-        const url = `http://localhost:5000/products/${id}`
+        const url = `https://arcane-earth-34229.herokuapp.com/products/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
@@ -30,7 +30,7 @@ const MyItems = () => {
             phoneNo: e.target.number.value,
             productId: id
         }
-        axios.post('http://localhost:5000/myitem', myitem)
+        axios.post('https://arcane-earth-34229.herokuapp.com/myitem', myitem)
         .then(response =>{
             const {data} = response;
             if(data.insertedId){

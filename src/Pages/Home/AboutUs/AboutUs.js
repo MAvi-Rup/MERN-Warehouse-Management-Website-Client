@@ -8,7 +8,7 @@ const AboutUs = () => {
 
 
 
-        const url = `http://localhost:5000/message/`
+        const url = `https://arcane-earth-34229.herokuapp.com/message/`
 
         fetch(url, {
             method: 'POST',

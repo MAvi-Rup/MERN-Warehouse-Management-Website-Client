@@ -8,7 +8,7 @@ const useOrders =()=>{
     
     const email = user?.email;
     useEffect(() => {
-        const url = `http://localhost:5000/myitem?email=${email}`;
+        const url = `https://arcane-earth-34229.herokuapp.com/myitem?email=${email}`;
         fetch(url)
         .then(res=>res.json())
         .then(data=>setOrders(data))

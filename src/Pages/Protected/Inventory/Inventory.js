@@ -10,7 +10,7 @@ const Inventory = () => {
     const { productId } = useParams()
     const [product, setProduct] = useState({})
     useEffect(() => {
-        const url = `http://localhost:5000/products/${productId}`
+        const url = `https://arcane-earth-34229.herokuapp.com/products/${productId}`
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
@@ -26,7 +26,7 @@ const Inventory = () => {
         const newQuantity = quantity+value;
 
         const updateProduct ={newQuantity}
-        const url = `http://localhost:5000/products/${productId}`
+        const url = `https://arcane-earth-34229.herokuapp.com/products/${productId}`
 
         fetch(url, {
             method:'PUT',
@@ -52,7 +52,7 @@ const Inventory = () => {
         const newQuantity = quantity-1;
 
         const updateProduct ={newQuantity}
-        const url = `http://localhost:5000/products/${productId}`
+        const url = `https://arcane-earth-34229.herokuapp.com/products/${productId}`
 
         fetch(url, {
             method:'PUT',
