@@ -4,6 +4,7 @@ import auth from '../../../firebase.init';
 import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../Loading/Loading';
+import useToken from '../../hooks/useToken';
 
 const SocialMediaLogin = () => {
     const [signInWithGoogle, user, loadingGoogle, errorGoogle] = useSignInWithGoogle(auth);
@@ -16,6 +17,8 @@ const SocialMediaLogin = () => {
     
     let errorElement;
 
+    const [token] = useToken(user || userGit)
+
     if(loadingGoogle || loadingGit){
         return <Loading></Loading>
     }
@@ -24,7 +27,7 @@ const SocialMediaLogin = () => {
         errorElement = <p className='text-warning'>Error: {errorGoogle?.message} {errorGit?.message}</p>
     }
 
-    if (user || userGit) {
+    if (token) {
         navigate(from, { replace: true });
     }
     return (

@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import Title from '../../Header/Title/Title';
+import useToken from '../../hooks/useToken';
 import Loading from '../../Loading/Loading';
 
 import SocialMediaLogin from '../SocialMediaLogin/SocialMediaLogin';
@@ -24,9 +25,14 @@ const Login = () => {
     const navigateRegister = event => {
         navigate('/register');
     }
-    if (user) {
+
+    const [token] = useToken(user)
+
+
+    if (token) {
         navigate(from, { replace: true });
     }
+    
     if(loading||sending){
         return <Loading></Loading>
     }

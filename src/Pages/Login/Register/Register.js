@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Title from '../../Header/Title/Title';
+import useToken from '../../hooks/useToken';
 import Loading from '../../Loading/Loading';
 import SocialMediaLogin from '../SocialMediaLogin/SocialMediaLogin';
 
@@ -26,6 +27,8 @@ const Register = () => {
     ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
+    const [token] = useToken(user)
+
     if(error ||updateError){
         handleError= <p className='text-warning'>Error:{error?.message}{updateError?.message}</p>
     }
@@ -34,7 +37,7 @@ const Register = () => {
         return <Loading></Loading>
     }
 
-    if (user) {
+    if (token) {
         navigate(from, { replace: true });
     }
 

@@ -51,7 +51,9 @@ const Inventory = () => {
         
         const newQuantity = quantity-1;
 
-        const updateProduct ={newQuantity}
+        const updateSold = sold+1;
+
+        const updateProduct ={newQuantity, updateSold}
         const url = `https://arcane-earth-34229.herokuapp.com/products/${productId}`
 
         fetch(url, {
