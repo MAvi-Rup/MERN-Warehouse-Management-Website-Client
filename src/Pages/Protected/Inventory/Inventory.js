@@ -11,36 +11,41 @@ const Inventory = () => {
     const [product, setProduct] = useState({})
     useEffect(() => {
         const url = `https://arcane-earth-34229.herokuapp.com/products/${productId}`
-        fetch(url)
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setProduct(data))
 
-    }, [productId,product])
+    }, [productId, product])
 
-    const {sold,name,desc,suplier,price,quantity,img}=product;
+    const { sold, name, desc, suplier, price, quantity, img } = product;
 
 
     const manageQuantity = (e) => {
         e.preventDefault();
         const value = parseInt(e.target.quantity.value)
-        const newQuantity = quantity+value;
+        const newQuantity = quantity + value;
 
-        const updateProduct ={newQuantity}
+        const updateProduct = { newQuantity }
         const url = `https://arcane-earth-34229.herokuapp.com/products/${productId}`
 
         fetch(url, {
-            method:'PUT',
-            headers:{
+            method: 'PUT',
+            headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(updateProduct)
         })
-        .then(res=>res.json())
-        .then(data=>{
-            alert('Quantity added')
-            e.target.reset()
+            .then(res => res.json())
+            .then(data => {
+                alert('Quantity added')
+                e.target.reset()
 
-        })
+            })
 
 
 
@@ -48,25 +53,25 @@ const Inventory = () => {
 
 
     const handleDelivered = () => {
-        
-        const newQuantity = quantity-1;
 
-        const updateSold = sold+1;
+        const newQuantity = quantity - 1;
 
-        const updateProduct ={newQuantity, updateSold}
+        const updateSold = sold + 1;
+
+        const updateProduct = { newQuantity, updateSold }
         const url = `https://arcane-earth-34229.herokuapp.com/products/${productId}`
 
         fetch(url, {
-            method:'PUT',
-            headers:{
+            method: 'PUT',
+            headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(updateProduct)
         })
-        .then(res=>res.json())
-        .then(data=>{
-            alert('Deleivered')
-        })
+            .then(res => res.json())
+            .then(data => {
+                alert('Deleivered')
+            })
 
     }
 
@@ -85,9 +90,9 @@ const Inventory = () => {
                             {desc}
                         </Card.Text>
                         <small className="text-muted">Suplier Name: {suplier}</small><br />
-                        
-                            <Button onClick={()=>{handleDelivered()}} variant="danger">Deliverd</Button>
-                      
+
+                        <Button onClick={() => { handleDelivered() }} variant="danger">Deliverd</Button>
+
                     </Card.Body>
                     <Card.Footer className="text-muted fw-bold">Items Sold: {sold}</Card.Footer>
                 </Card>

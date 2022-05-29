@@ -9,8 +9,11 @@ const OrderDetails = ({order}) => {
         const proceed = window.confirm('Are you sure?');
         if (proceed) {
             const url = `https://arcane-earth-34229.herokuapp.com/myitem/${id}?email=${user?.email}`
-            fetch(url, {
-                method: 'DELETE'
+            fetch(url,  {
+                method: 'DELETE',
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {

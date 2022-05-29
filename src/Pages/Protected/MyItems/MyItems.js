@@ -10,7 +10,12 @@ const MyItems = () => {
     const [product, setProduct] = useState({})
     useEffect(() => {
         const url = `https://arcane-earth-34229.herokuapp.com/products/${id}`
-        fetch(url)
+        fetch(url,  {
+            method: 'GET',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setProduct(data))
 
