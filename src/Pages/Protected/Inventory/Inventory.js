@@ -47,8 +47,8 @@ const Inventory = () => {
     }
 
 
-    const handleDelivered = (e) => {
-        e.preventDefault();
+    const handleDelivered = () => {
+        
         const newQuantity = quantity-1;
 
         const updateProduct ={newQuantity}
