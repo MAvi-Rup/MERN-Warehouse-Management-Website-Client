@@ -9,10 +9,16 @@ const useOrders =()=>{
     const email = user?.email;
     useEffect(() => {
         const url = `https://arcane-earth-34229.herokuapp.com/myitem?email=${email}`;
-        fetch(url)
+        fetch(url,{
+            method:'GET',
+            headers: {
+                authorization:`Bearer ${localStorage.getItem('accessToken')}`
+            }
+
+        })
         .then(res=>res.json())
         .then(data=>setOrders(data))
-    }, [email,orders])
+    }, [user,orders])
     return [orders,setOrders,user]
 
 }

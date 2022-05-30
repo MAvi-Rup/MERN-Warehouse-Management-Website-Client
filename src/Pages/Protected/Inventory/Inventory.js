@@ -11,14 +11,9 @@ const Inventory = () => {
     const [product, setProduct] = useState({})
     useEffect(() => {
         const url = `https://arcane-earth-34229.herokuapp.com/products/${productId}`
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => setProduct(data))
+        fetch(url)
+        .then(res => res.json())
+        .then(data => setProduct(data))
 
     }, [productId, product])
 
@@ -29,8 +24,9 @@ const Inventory = () => {
         e.preventDefault();
         const value = parseInt(e.target.quantity.value)
         const newQuantity = quantity + value;
+        const updateSold = sold;
 
-        const updateProduct = { newQuantity }
+        const updateProduct = { newQuantity,updateSold }
         const url = `https://arcane-earth-34229.herokuapp.com/products/${productId}`
 
         fetch(url, {
@@ -54,9 +50,9 @@ const Inventory = () => {
 
     const handleDelivered = () => {
 
-        const newQuantity = quantity - 1;
+        const newQuantity =  quantity - 1;
 
-        const updateSold = sold + 1;
+        const updateSold = parseInt(sold) + 1;
 
         const updateProduct = { newQuantity, updateSold }
         const url = `https://arcane-earth-34229.herokuapp.com/products/${productId}`
